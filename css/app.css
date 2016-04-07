@@ -10,10 +10,13 @@ body{
 */
 }
 .home{
+   
+}
+
+
+.some{
     position: absolute;
     width: 80%;
-    height: 100%;
-    padding: 2em;
     box-sizing: border-box;
     color: white;
     background-size: cover;
