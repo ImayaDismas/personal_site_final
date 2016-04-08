@@ -38,23 +38,18 @@
                         <img class="mockup__img" src="img/home.jpg" />
 
                         <header class="codrops-header">
-                            <h1><span>Hi, I'm</span> Imaya Dismas <i>An animated perspective mockup with 3D transforms computed with <a href="http://franklinta.com/2014/09/08/computing-css-matrix3d-transforms/">Franklin Ta's helper script</a></i></h1>
+                            <h1><span>Hi, I'm</span> Imaya Dismas <i>I'm am </br></br>Android developer</i></h1>
+                            
                         </header>
                     </div>
                 </div>
                 </div>
-                     </div>   
+                     </div>
+                     <a class="arrow-wrap" href="#about">
+                        <span class="arrow"></span>
+                        <!--<span class="hint">scroll</span>-->
+                    </a>   
                     </div>
-<!--
-                <section class="hero">
-                  <div class="row intro">
-                    <div class="small-centered medium-uncentered medium-6 large-7 columns">
-                      <h1>Truth? What truth?</h1>
-                      <p>Don't you want to take a leap of faith? Or become an old man, filled with regret, waiting to die alone!</p>
-                    </div>
-                  </div>
-                </section>
--->
 
                 
                 <div class="row">
@@ -89,9 +84,48 @@
                 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
                 <script src="js/app.js"></script>
                 <script type="text/javascript">
-                    $(function() {
-                        $( ".box" ).draggable();
-                    });
+                    //this is where we apply opacity to the arrow
+                        $(window).scroll( function(){
+
+                          //get scroll position
+                          var topWindow = $(window).scrollTop();
+                          //multipl by 1.5 so the arrow will become transparent half-way up the page
+                          var topWindow = topWindow * 1.5;
+
+                          //get height of window
+                          var windowHeight = $(window).height();
+
+                          //set position as percentage of how far the user has scrolled 
+                          var position = topWindow / windowHeight;
+                          //invert the percentage
+                          position = 1 - position;
+
+                          //define arrow opacity as based on how far up the page the user has scrolled
+                          //no scrolling = 1, half-way up the page = 0
+                          $('.arrow-wrap').css('opacity', position);
+
+                        });
+
+
+
+
+
+
+                        //Code stolen from css-tricks for smooth scrolling:
+                        $(function() {
+                          $('a[href*=#]:not([href=#])').click(function() {
+                            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                              var target = $(this.hash);
+                              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                              if (target.length) {
+                                $('html,body').animate({
+                                  scrollTop: target.offset().top
+                                }, 1000);
+                                return false;
+                              }
+                            }
+                          });
+                        });
                 </script>
                 <script type="text/javascript">
                    function autorun()
